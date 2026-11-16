@@ -1,0 +1,43 @@
+@import '@fontsource/inter/cyrillic-400.css';
+@import '@fontsource/inter/cyrillic-600.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/pt-serif/cyrillic-400.css';
+@import '@fontsource/pt-serif/cyrillic-700.css';
+@import '@fontsource/pt-serif/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white font-sans text-ink antialiased overflow-x-hidden; }
+  h1, h2, h3 { @apply font-serif font-bold text-ink; }
+  img { @apply max-w-full; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1200px] px-4 sm:px-8; }
+  .btn { @apply inline-flex items-center justify-center rounded-pill px-6 py-2.5 text-[12px] font-semibold uppercase tracking-wider transition duration-200 hover:-translate-y-0.5 hover:shadow-card active:translate-y-0 disabled:pointer-events-none disabled:opacity-50; }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark; }
+  .btn-outline { @apply btn border border-brand bg-transparent text-brand hover:bg-brand hover:text-white; }
+  .field { @apply w-full rounded-pill border border-brand/60 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20; }
+  .field-error { @apply border-red-500 focus:border-red-500 focus:ring-red-500/20; }
+  .perspective { perspective: 1000px; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+@keyframes cyber-flight { 0% { transform: translate(0,16px) scale(.65); opacity:0 } 35% { opacity:1 } 70% { transform:translate(24px,-18px) scale(1.08) } 100% { transform:translate(0,0) scale(1); opacity:1 } }
+@keyframes cyber-orbit { to { transform:rotate(360deg) } }
+@keyframes cyber-scan { 0% { transform:translateY(-100%); opacity:0 } 20% { opacity:.55 } 100% { transform:translateY(450%); opacity:0 } }
+.cyber-success { isolation:isolate }
+.cyber-grid { background-image:linear-gradient(rgba(34,211,238,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.12) 1px,transparent 1px); background-size:24px 24px; animation:cyber-scan 3.5s linear infinite }
+.cyber-orbit { animation:cyber-orbit 8s linear infinite; box-shadow:0 0 36px rgba(34,211,238,.12),inset 0 0 24px rgba(34,211,238,.1) }
+.cyber-rocket { animation:cyber-flight 1.4s cubic-bezier(.2,.8,.2,1) both; filter:drop-shadow(0 0 12px rgba(34,211,238,.8)) }
+@media (prefers-reduced-motion:reduce) { .cyber-grid,.cyber-orbit,.cyber-rocket { animation:none!important } }
